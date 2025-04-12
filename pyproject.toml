@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "ucs-software-architecture-project"
+version = "0.1.0"
+description = ""
+authors = ["Lucas Alves <lucas.alves@beemon.com.br>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.1.0"
+flask-sqlalchemy = "^3.1.1"
+flask-migrate = "^4.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
