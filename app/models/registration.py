@@ -1,6 +1,7 @@
-from sqlalchemy import  ForeignKey
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 from app.main import db
+
 
 class Registration(db.Model):
     __tablename__ = 'registrations'
@@ -15,6 +16,8 @@ class Registration(db.Model):
 
     institution = relationship('Institution', backref='registrations')
     course = relationship('course', backref='registrations')
+
+    __table_args__ = (db.UniqueConstraint('institution_id', 'course_id', 'year', name='unique_registration'),)
 
     def __repr__(self):
         return f'{self.course.name} - {self.year}'

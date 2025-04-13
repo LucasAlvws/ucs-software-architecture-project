@@ -10,8 +10,41 @@ python = "^3.10"
 flask = "^3.1.0"
 flask-sqlalchemy = "^3.1.1"
 flask-migrate = "^4.1.0"
+python-dotenv = "^1.1.0"
 
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+exclude = [
+    "test*",
+    "helpers",
+    "pdfbase64",
+    "enums",
+    "__init__.py",
+    "tests",
+    "fixtures",
+    "migrations"
+]
+line-length = 119
+target-version = "py310"
+lint.ignore = ["E713", "F403", "E741", "E731", "PLR2004"]
+lint.select = ["E", "F", "PL"]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.black]
+line-length = 119
+skip-string-normalization = true  # equivalente ao -S
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+line_length = 119
