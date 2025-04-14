@@ -2,7 +2,7 @@ from app.models import Course
 from app.main import db
 
 
-class CourseDAO:
+class CourseDao:
     def get_by_id(self, course_id):
         return Course.query.get(course_id)
 

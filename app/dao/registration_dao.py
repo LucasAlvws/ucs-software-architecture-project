@@ -2,7 +2,7 @@ from app.models import Registration
 from app.main import db
 
 
-class RegistrationDAO:
+class RegistrationDao:
     def get_by_id(self, registration_id):
         return Registration.query.get(registration_id)
 

@@ -2,7 +2,7 @@ from app.models import Institution
 from app.main import db
 
 
-class InstitutionDAO:
+class InstitutionDao:
     def get_by_id(self, instituition_id):
         return Institution.query.get(instituition_id)
 
