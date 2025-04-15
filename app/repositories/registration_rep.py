@@ -1,12 +1,9 @@
 from app.dao import RegistrationDao
 from app.models import Registration
+from app.repositories.base_rep import BaseRepository
 
 
-class RegistrationRepository:
+class RegistrationRepository(BaseRepository):
     def __init__(self):
         self.dao = RegistrationDao()
-
-    def update_or_create(self, defaults):
-        registration = Registration(**defaults)
-        self.dao.save(registration)
-        return registration
+        self.model = Registration

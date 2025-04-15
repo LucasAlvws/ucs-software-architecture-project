@@ -15,7 +15,7 @@ class Registration(db.Model):
     course_id = db.Column(db.Integer, ForeignKey('courses.id'), nullable=False)
 
     institution = relationship('Institution', backref='registrations')
-    course = relationship('course', backref='registrations')
+    course = relationship('Course', backref='registrations')
 
     __table_args__ = (db.UniqueConstraint('institution_id', 'course_id', 'year', name='unique_registration'),)
 

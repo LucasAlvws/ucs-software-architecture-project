@@ -1,15 +1,7 @@
 from app.models import Registration
-from app.main import db
+from app.dao.base_dao import BaseDao
 
 
-class RegistrationDao:
-    def get_by_id(self, registration_id):
-        return Registration.query.get(registration_id)
-
-    def save(self, registration):
-        db.session.add(registration)
-        db.session.commit()
-
-    def delete(self, registration):
-        db.session.delete(registration)
-        db.session.commit()
+class RegistrationDao(BaseDao):
+    def __init__(self):
+        self.model = Registration

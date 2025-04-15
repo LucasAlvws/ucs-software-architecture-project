@@ -1,15 +1,7 @@
 from app.models import Course
-from app.main import db
+from app.dao.base_dao import BaseDao
 
 
-class CourseDao:
-    def get_by_id(self, course_id):
-        return Course.query.get(course_id)
-
-    def save(self, course):
-        db.session.add(course)
-        db.session.commit()
-
-    def delete(self, course):
-        db.session.delete(course)
-        db.session.commit()
+class CourseDao(BaseDao):
+    def __init__(self):
+        self.model = Course
