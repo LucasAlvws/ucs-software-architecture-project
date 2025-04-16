@@ -19,17 +19,30 @@
 - [] Desenvolver templates utilizando Mako para as páginas da aplicação.
 - [] Implementar formulários e validações conforme necessário.
 
+    Funcionalidades especifidas
+    - [] Listagem com todas as faculs
+    - [] Adicionar filtros de pesquisa
+  
+**Dados Agregados:**
+- [] Total de alunos matriculados (no Brasil) por ano
+- [] Total de alunos matriculados (no Brasil) por ano, com a possibilidade de escolher a modalidade (EaD ou Presencial)
+- [] Ranking de cursos em 2022 (10 cursos com maior número de matrículas no Brasil)
+- [] Ranking de cursos em 2022 (10 cursos com maior número de matrículas no Brasil), com a possibilidade de escolher a modalidade (EaD ou Presencial)
+- [] Consulta para agregações semelhantes às anteriores com um filtro para Estados
 
-5. Testes --> Nao solicita mas seria interessante
+**Salvar consultas:** 
+- [] armazenar pelo menos as duas últimas consultas e disponibilizar acesso rápido a elas
+
+1. Testes --> Nao solicita mas seria interessante
 - [] Escrever testes unitários para as funcionalidades implementadas.
 - [] Configurar testes de integração para verificar a interação entre componentes.
 - [] Automatizar a execução dos testes com uma ferramenta como pytest.
 
-6. Documentação
+1. Documentação
 - [x] Elaborar um README detalhado com instruções de instalação, uso e contribuição.
 - [] Documentar a arquitetura da aplicação, incluindo diagramas e explicações dos componentes.
 - [] Manter um changelog para registrar as alterações significativas no projeto.
 
-7. Controle de Versão e Colaboração
+1. Controle de Versão e Colaboração
 - [x] Utilizar branches para desenvolvimento de novas funcionalidades.
 - [x] Realizar pull requests para integrar mudanças ao branch principal.
