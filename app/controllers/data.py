@@ -21,9 +21,6 @@ def upload_csv():
         institution_rep = InstitutionRepository()
         df = pd.read_csv(file, sep=';')
         for index, row in df.iterrows():
-            from IPython import embed
-
-            embed(header=f'{index}')
             institution_dict = {
                 'name': row['IES'].strip(),
                 'acronym': row['Sigla'].strip(),
@@ -44,7 +41,10 @@ def upload_csv():
                 'institution': institution,
                 'course': course,
             }
-            registration = registration_rep.update_or_create(registration_base_dict)  # noqa: F841
+            for year in df.columns[10:]:
+                deafult = {'year': year, 'quantity': row[year]}
+                deafult.update(registration_base_dict)
+                registration_rep.update_or_create(deafult)  # noqa: F841
         return jsonify({'message': 'CSV recebido com sucesso', 'columns': df.columns.tolist()})
     except Exception as e:
         return jsonify({'error': str(e)}), 500

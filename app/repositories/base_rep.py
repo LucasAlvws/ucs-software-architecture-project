@@ -1,6 +1,5 @@
 class BaseRepository:
     def filter(self, defaults):
-        from IPython import embed;embed(header='asdasd')
         return self.dao.get_by_attributes(defaults)
 
     def update_or_create(self, defaults):
