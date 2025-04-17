@@ -1,0 +1,45 @@
+<%inherit file="/base.html"/>
+
+<h1>Dashboard de Matrículas</h1>
+
+<h2>Total por Ano</h2>
+<select name="modalidade" id="modalidade-select"
+        hx-get="/por-ano" hx-target="#por-ano-container">
+  <option value="">Todas</option>
+  <option value="EAD">EAD</option>
+  <option value="Presencial">Presencial</option>
+</select>
+
+<div id="por-ano-container" hx-get="/por-ano" hx-trigger="load">
+  Carregando...
+</div>
+
+<hr>
+
+<h2>Ranking de Cursos (2022)</h2>
+<select name="modalidade" id="ranking-modalidade"
+        hx-get="/ranking" hx-target="#ranking-container">
+  <option value="">Todas</option>
+  <option value="EAD">EAD</option>
+  <option value="Presencial">Presencial</option>
+</select>
+
+<select name="estado" id="ranking-estado"
+        hx-get="/ranking" hx-target="#ranking-container">
+  <option value="">Todos os estados</option>
+  <option value="SP">SP</option>
+  <option value="RJ">RJ</option>
+  <option value="MG">MG</option>
+  <!-- Adicione mais estados -->
+</select>
+
+<div id="ranking-container" hx-get="/ranking" hx-trigger="load">
+  Carregando...
+</div>
+
+<hr>
+
+<h2>Últimas Consultas</h2>
+<div id="ultimas-container" hx-get="/ultimas" hx-trigger="load">
+  Carregando...
+</div>
