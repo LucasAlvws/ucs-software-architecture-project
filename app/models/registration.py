@@ -8,8 +8,15 @@ class Registration(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     state = db.Column(db.String(32))
     city = db.Column(db.String(32))
-    year = db.Column(db.Integer, nullable=False)
-    quantity = db.Column(db.Integer())
+    year_2014 = db.Column(db.Integer())
+    year_2015 = db.Column(db.Integer())
+    year_2016 = db.Column(db.Integer())
+    year_2017 = db.Column(db.Integer())
+    year_2018 = db.Column(db.Integer())
+    year_2019 = db.Column(db.Integer())
+    year_2020 = db.Column(db.Integer())
+    year_2021 = db.Column(db.Integer())
+    year_2022 = db.Column(db.Integer())
 
     institution_id = db.Column(db.Integer, ForeignKey('institutions.id'), nullable=False)
     course_id = db.Column(db.Integer, ForeignKey('courses.id'), nullable=False)
@@ -17,7 +24,5 @@ class Registration(db.Model):
     institution = relationship('Institution', backref='registrations')
     course = relationship('Course', backref='registrations')
 
-    __table_args__ = (db.UniqueConstraint('institution_id', 'course_id', 'year', name='unique_registration'),)
-
     def __repr__(self):
-        return f'{self.course.name} - {self.year}'
+        return f'{self.course.name} - {self.state} - {self.city}'

@@ -11,7 +11,7 @@ class BaseDao:
 
     def save(self, _object):
         db.session.add(_object)
-        db.session.commit()
+        db.session.flush()
 
     def delete(self, _object):
         db.session.delete(_object)

@@ -8,6 +8,12 @@ class RegistrationRepository(BaseRepository):
         self.dao = RegistrationDao()
         self.model = Registration
 
-    def filter_unique(self, institution, course, year, **_):
-        defaults = {'institution': institution, 'course': course, 'year': year}
+    def filter_unique(self, institution, course, **_):
+        defaults = {'institution': institution, 'course': course}
         return self.dao.get_by_attributes(defaults)
+    
+    def bulk_save_objects(self, registration_list):
+        self.dao.bulk_save_objects(registration_list)
+
+    def create_obj(self, defaults):
+        return self.model(**defaults)
