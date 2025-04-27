@@ -47,8 +47,5 @@ def upload_csv():
         registration_rep.update_by_dataframe(df)
         return jsonify({'message': 'CSV recebido com sucesso', 'columns': df.columns.tolist()})
     except Exception as e:
-        from IPython import embed
-
-        embed(header='')
         print(traceback.format_exc())
         return jsonify({'error': str(e)}), 500
