@@ -1,1 +1,1 @@
-from app.models import Course, Institution, Registration  # noqa: F401
+from app.models import Registration  # noqa: F401

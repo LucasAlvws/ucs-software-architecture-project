@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 def create_app():
-    from app.models import Course, Registration, Institution  # noqa: F401
+    from app.models import Registration  # noqa: F401
     from app.controllers.data import upload_bp
 
     db.init_app(app)
