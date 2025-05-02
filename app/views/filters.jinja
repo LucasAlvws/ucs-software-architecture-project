@@ -11,15 +11,17 @@
     </div>
     <div class="flex items-center p-1 gap-2">
         <label for="mode" class="font-bold">Modalidade</label>
-        <select id="mode" name="mode" class="border-1 p-1 rounded-md">
+        <select id="mode" name="mode" class="border-1 p-1 rounded-md"
+            hx-get="/modalities"
+            hx-trigger="click once"
+            hx-swap="beforeend"
+            hx-target="this">
             <option value="all">Todos</option>
-            <option value="remote">EAD</option>
-            <option value="in-person">Presencial</option>
         </select>
     </div>
     <div class="flex items-center p-1 gap-2">
-        <label for="mode" class="font-bold">Estado</label>
-        <select id="mode" name="mode" class="border-1 p-1 rounded-md"
+        <label for="state" class="font-bold">Estado</label>
+        <select id="state" name="state" class="border-1 p-1 rounded-md"
             hx-get="/states"
             hx-trigger="click once"
             hx-swap="beforeend"

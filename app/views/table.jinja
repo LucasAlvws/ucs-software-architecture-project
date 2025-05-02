@@ -1,29 +1,28 @@
 <div class="grid grid-cols-2 gap-6 auto-rows-max my-20 px-4 max-w-6xl mx-auto">
 
   <div class="bg-white rounded-xl shadow-md p-6">
-    <h3 class="text-lg font-semibold mb-2">Total Alunos Matriculados Brasil por Ano</h3>
-    <p class="text-gray-700 text-base">8.000</p>
+    <h3 class="text-lg font-semibold mb-2">Total Alunos Matriculados</h3>
+    <p class="text-gray-700 text-base">{{ students }}</p>
   </div>
 
   <div class="bg-white rounded-xl shadow-md p-6">
-    <h3 class="text-lg font-semibold mb-2">Total Alunos Matriculados Brasil por Modalidade</h3>
-    <p class="text-gray-700 text-base">8.000</p>
-  </div>
-
-  <div class="bg-white rounded-xl shadow-md p-6">
-    <h3 class="text-lg font-semibold">Ranking Cursos com Maior Número de Matrículas no Brasil (Top 10)</h3>
-  </div>
-
-  <div class="bg-white rounded-xl shadow-md p-6">
-    <h3 class="text-lg font-semibold">Ranking Cursos por Modalidade (Top 10)</h3>
-  </div>
-
-  <div class="bg-white rounded-xl shadow-md p-6">
-    <h3 class="text-lg font-semibold">Ranking de Cursos por Estado</h3>
-  </div>
-
-  <div class="bg-white rounded-xl shadow-md p-6">
-    <h3 class="text-lg font-semibold">Ranking Cursos por Modalidade por Estado</h3>
+    <h3 class="text-lg font-semibold">Ranking Cursos com Maior Número de Matrículas (Top 10)</h3>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Instituição</th>
+          <th>Total Alunos</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for institution in institutions %}
+          <tr>
+            <td>{{ institution.institution_name }}</td>
+            <td>{{ institution.students }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 
   <div class="bg-white rounded-xl shadow-md p-6">

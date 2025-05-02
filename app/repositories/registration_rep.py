@@ -33,8 +33,20 @@ class RegistrationRepository:
         }
         return self.dao.get_by_attributes(defaults)
 
+    def get_course_ranking(self, filter: dict = {}):
+        return self.dao.get_course_ranking(filter).mappings().all()
+
+    def get_total_student_count(self, filter: dict = {}):
+        return self.dao.get_total_student_count(filter).scalars().first()
+
     def get_states_acronym(self):
         return self.dao.get_states_acronym().scalars().all()
+
+    def get_available_years(self):
+        return self.dao.get_available_years().scalars().all()
+
+    def get_modalities(self):
+        return self.dao.get_modalities().scalars().all()
 
     def get_main_data(self):
         return self.dao.get_main_data()
