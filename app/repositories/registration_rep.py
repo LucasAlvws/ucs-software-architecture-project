@@ -34,7 +34,7 @@ class RegistrationRepository:
         return self.dao.get_by_attributes(defaults)
 
     def get_states_acronym(self):
-        return list(self.dao.get_states_acronym().fetchall())
+        return self.dao.get_states_acronym().scalars().all()
 
     def get_main_data(self):
         return self.dao.get_main_data()
