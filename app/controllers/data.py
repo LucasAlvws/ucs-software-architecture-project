@@ -32,20 +32,32 @@ def upload_csv():
                 'Nome Detalhado do Curso': 'course_detailed_name',
                 'Modalidade': 'course_modality',
                 'Grau': 'course_degree',
-                '2014': 'year_2014',
-                '2015': 'year_2015',
-                '2016': 'year_2016',
-                '2017': 'year_2017',
-                '2018': 'year_2018',
-                '2019': 'year_2019',
-                '2020': 'year_2020',
-                '2021': 'year_2021',
-                '2022': 'year_2022',
             }
         )
+
+        df = pd.melt(
+            df,
+            id_vars=[
+                "state",
+                "city",
+                "institution_name",
+                "institution_acronym",
+                "institution_organization",
+                "institution_category",
+                "course_name",
+                "course_detailed_name",
+                "course_modality",
+                "course_degree",
+            ],
+            value_vars=['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+            var_name='year',
+            value_name='student_count',
+        )
+
         df = df.where(pd.notnull(df), '')
         registration_rep.update_by_dataframe(df)
         return jsonify({'message': 'CSV recebido com sucesso', 'columns': df.columns.tolist()})
+
     except Exception as e:
         print(traceback.format_exc())
         return jsonify({'error': str(e)}), 500

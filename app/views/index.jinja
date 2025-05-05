@@ -1,0 +1,6 @@
+{% extends "base.jinja" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    {% include "filters.jinja"%}
+    <section id="content" hx-get="/table" hx-target="this" hx-swap="innerHTML" hx-trigger="load"></section>
+{% endblock %}

@@ -4,16 +4,17 @@ version = "0.1.0"
 description = ""
 authors = ["Lucas Alves <lucas.alves@beemon.com.br>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
-python = ">=3.11,<4.0"
+python = ">=3.10,<4.0"
 flask = "^3.1.0"
 flask-sqlalchemy = "^3.1.1"
 flask-migrate = "^4.1.0"
 python-dotenv = "^1.1.0"
 requests = "^2.32.3"
 pandas = "^2.2.3"
-ipython = "^9.1.0"
+jinja2 = "^3.1.6"
 
 
 [tool.poetry.group.dev.dependencies]
