@@ -1,31 +1,35 @@
-<form class="flex items-center p-1 gap-2 mx-auto mt-10" hx-post="/filter" hx-target="#content" hx-swap="innerHTML">
+<form id="filter-form" class="flex items-center p-1 gap-2 mx-auto mt-10"
+      hx-post="/filter"
+      hx-target="#content"
+      hx-swap="innerHTML"
+      onsubmit="saveFilterToLocalStorage(event)">
     <div class="flex items-center p-1 gap-2">
         <label for="year" class="font-bold">Ano</label>
-        <select id="#year" name="year" class="border-1 p-1 rounded-md"
-            hx-get="/available-years"
-            hx-trigger="click once"
-            hx-swap="beforeend"
-            hx-target="this">
+        <select id="year" name="year" class="border-1 p-1 rounded-md"
+                hx-get="/available-years"
+                hx-trigger="click once"
+                hx-swap="beforeend"
+                hx-target="this">
             <option value="0">Todos</option>
         </select>
     </div>
     <div class="flex items-center p-1 gap-2">
         <label for="mode" class="font-bold">Modalidade</label>
         <select id="mode" name="mode" class="border-1 p-1 rounded-md"
-            hx-get="/modalities"
-            hx-trigger="click once"
-            hx-swap="beforeend"
-            hx-target="this">
+                hx-get="/modalities"
+                hx-trigger="click once"
+                hx-swap="beforeend"
+                hx-target="this">
             <option value="all">Todos</option>
         </select>
     </div>
     <div class="flex items-center p-1 gap-2">
         <label for="state" class="font-bold">Estado</label>
         <select id="state" name="state" class="border-1 p-1 rounded-md"
-            hx-get="/states"
-            hx-trigger="click once"
-            hx-swap="beforeend"
-            hx-target="this">
+                hx-get="/states"
+                hx-trigger="click once"
+                hx-swap="beforeend"
+                hx-target="this">
             <option value="all">Todos</option>
         </select>
     </div>
