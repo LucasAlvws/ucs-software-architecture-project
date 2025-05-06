@@ -1,36 +1,42 @@
-<div class="grid grid-cols-2 gap-6 auto-rows-max my-20 px-4 max-w-6xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-max mt-5 mb-20 px-4 max-w-6xl mx-auto">
 
-  <div class="bg-white rounded-xl shadow-md p-6">
-    <h3 class="text-lg font-semibold mb-2">Total Alunos Matriculados</h3>
-    <p class="text-gray-700 text-base">{{ students }}</p>
+  <!-- Card: Total de Alunos -->
+  <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+    <h3 class="text-xl font-bold text-gray-800 mb-2">Total de Alunos Matriculados</h3>
+    <p class="text-3xl font-semibold text-indigo-600">{{ students }}</p>
   </div>
 
-  <div class="bg-white rounded-xl shadow-md p-6">
-    <h3 class="text-lg font-semibold">Ranking Cursos com Maior Número de Matrículas (Top 10)</h3>
-    <table border="1">
-      <thead>
+  <!-- Card: Ranking de Instituições -->
+  <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow overflow-auto">
+    <h3 class="text-xl font-bold text-gray-800 mb-4">Top 10 Cursos com Mais Matrículas</h3>
+    <table class="min-w-full text-left text-sm text-gray-700">
+      <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
         <tr>
-          <th>Instituição</th>
-          <th>Total Alunos</th>
+          <th class="px-4 py-2">Instituição</th>
+          <th class="px-4 py-2">Total de Alunos</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="divide-y divide-gray-200">
         {% for institution in institutions %}
-          <tr>
-            <td>{{ institution.institution_name }}</td>
-            <td>{{ institution.students }}</td>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-2">{{ institution.institution_name }}</td>
+            <td class="px-4 py-2 font-medium text-indigo-500">{{ institution.students }}</td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
 
-  <div class="bg-white rounded-xl shadow-md p-6">
-    <h3 class="text-lg font-semibold">Última Consulta / Acesso Rápido 1</h3>
+  <!-- Card: Acesso Rápido 1 -->
+  <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+    <h3 class="text-xl font-bold text-gray-800">Última Consulta / Acesso Rápido 1</h3>
+    <!-- Conteúdo adicional aqui -->
   </div>
 
-  <div class="bg-white rounded-xl shadow-md p-6">
-    <h3 class="text-lg font-semibold">Última Consulta / Acesso Rápido 2</h3>
+  <!-- Card: Acesso Rápido 2 -->
+  <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+    <h3 class="text-xl font-bold text-gray-800">Última Consulta / Acesso Rápido 2</h3>
+    <!-- Conteúdo adicional aqui -->
   </div>
 
 </div>
