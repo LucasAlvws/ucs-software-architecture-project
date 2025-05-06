@@ -23,19 +23,13 @@ function saveFilterToLocalStorage(event) {
         state: formData.get("state")
     };
 
-    // Recupera filtros anteriores
     let recentFilters = JSON.parse(localStorage.getItem("recentFilters") || "[]");
 
-    // Adiciona o novo filtro no início
     recentFilters.unshift(filter);
 
-    // Mantém só os 2 últimos
-    recentFilters = recentFilters.slice(0, 2);
+    recentFilters = recentFilters.slice(0, 3);
 
     localStorage.setItem("recentFilters", JSON.stringify(recentFilters));
-
-    // Agora envia o formulário normalmente (com HTMX)
-    form.submit();
 }
 
 function applySavedFilter(index) {
@@ -46,16 +40,34 @@ function applySavedFilter(index) {
 
     const form = document.getElementById("filter-form");
 
-    // Define os valores dos selects
-    document.getElementById("year").value = filter.year;
     document.getElementById("mode").value = filter.mode;
     document.getElementById("state").value = filter.state;
 
-    // Dispara o submit HTMX do formulário
     setTimeout(() => {
         form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
-    }, 300);
+    }, 150);
 }
+
+function waitForOptionsToLoad(selectId, expectedValue, callback) {
+    const interval = setInterval(() => {
+        const select = document.getElementById(selectId);
+        if (select && [...select.options].some(opt => opt.value == expectedValue)) {
+            clearInterval(interval);
+            select.value = expectedValue;
+            callback();
+        }
+    }, 100);
+}
+
+
+waitForOptionsToLoad("year", filter.year, () => {
+    waitForOptionsToLoad("mode", filter.mode, () => {
+        waitForOptionsToLoad("state", filter.state, () => {
+            form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+        });
+    });
+});
+
 </script>
 
     <div id="wrapper" class="w-full max-w-4xl mx-auto px-4 flex flex-col">
