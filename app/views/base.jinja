@@ -10,6 +10,66 @@
     {% endblock %}
 </head>
 <body class="bg-gray-100">
+<script>
+function saveFilterToLocalStorage(event) {
+    event.preventDefault(); // Impede o envio automático do formulário
+
+    const form = document.getElementById("filter-form");
+    const formData = new FormData(form);
+
+    const filter = {
+        year: formData.get("year"),
+        mode: formData.get("mode"),
+        state: formData.get("state")
+    };
+
+    let recentFilters = JSON.parse(localStorage.getItem("recentFilters") || "[]");
+
+    recentFilters.unshift(filter);
+
+    recentFilters = recentFilters.slice(0, 3);
+
+    localStorage.setItem("recentFilters", JSON.stringify(recentFilters));
+}
+
+function applySavedFilter(index) {
+    const recentFilters = JSON.parse(localStorage.getItem("recentFilters") || "[]");
+    const filter = recentFilters[index];
+
+    if (!filter) return;
+
+    const form = document.getElementById("filter-form");
+
+    document.getElementById("mode").value = filter.mode;
+    document.getElementById("state").value = filter.state;
+
+    setTimeout(() => {
+        form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    }, 150);
+}
+
+function waitForOptionsToLoad(selectId, expectedValue, callback) {
+    const interval = setInterval(() => {
+        const select = document.getElementById(selectId);
+        if (select && [...select.options].some(opt => opt.value == expectedValue)) {
+            clearInterval(interval);
+            select.value = expectedValue;
+            callback();
+        }
+    }, 100);
+}
+
+
+waitForOptionsToLoad("year", filter.year, () => {
+    waitForOptionsToLoad("mode", filter.mode, () => {
+        waitForOptionsToLoad("state", filter.state, () => {
+            form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+        });
+    });
+});
+
+</script>
+
     <div id="wrapper" class="w-full max-w-4xl mx-auto px-4 flex flex-col">
     {% block content %}{% endblock %}
     </div>

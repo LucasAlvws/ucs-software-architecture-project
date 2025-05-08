@@ -35,6 +35,12 @@ def upload_csv():
             }
         )
 
+        year_columns = ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
+
+        df[year_columns] = df[year_columns].replace('', pd.NA).fillna(0)
+
+        df[year_columns] = df[year_columns].astype(int)
+
         df = pd.melt(
             df,
             id_vars=[
@@ -49,7 +55,7 @@ def upload_csv():
                 "course_modality",
                 "course_degree",
             ],
-            value_vars=['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+            value_vars=year_columns,
             var_name='year',
             value_name='student_count',
         )
